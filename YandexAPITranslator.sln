@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexAPITranslator", "YandexAPITranslator\YandexAPITranslator.csproj", "{D7A174D5-0735-48CA-A6AA-0E07B453CB4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexAPITranslator.Tests", "YandexAPITranslator.Tests\YandexAPITranslator.Tests.csproj", "{BF97C72D-33E5-411B-BBDF-F3A3467770F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7A174D5-0735-48CA-A6AA-0E07B453CB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A174D5-0735-48CA-A6AA-0E07B453CB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A174D5-0735-48CA-A6AA-0E07B453CB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A174D5-0735-48CA-A6AA-0E07B453CB4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF97C72D-33E5-411B-BBDF-F3A3467770F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF97C72D-33E5-411B-BBDF-F3A3467770F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF97C72D-33E5-411B-BBDF-F3A3467770F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF97C72D-33E5-411B-BBDF-F3A3467770F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C47ADAC5-5522-4F49-99B0-7F66FFB16043}
+	EndGlobalSection
+EndGlobal
