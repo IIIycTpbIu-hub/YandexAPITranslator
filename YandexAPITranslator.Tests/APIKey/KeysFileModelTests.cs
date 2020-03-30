@@ -12,9 +12,9 @@ namespace YandexAPITranslator.Tests.APIKey
         public void CheckCreatingKeyConfigFileIfNotExists()
         {
             string path = Environment.CurrentDirectory;
-            APIKeysFileExistingModel existingModel = new APIKeysFileExistingModel(path);
+            APIKeysFileExistingChecker existingModel = new APIKeysFileExistingChecker(path);
             
-            if(!existingModel.IsConfilgExists)
+            if(!existingModel.IsAPIKeysFileExists)
             {
                 bool result = existingModel.CreateKeysConfingFile();
                 Assert.AreEqual(path + "\\APIKeys.xml", existingModel.ConfigFilePath);
@@ -26,8 +26,8 @@ namespace YandexAPITranslator.Tests.APIKey
         public void CheckCreatingKeyConfigFileIfExists()
         {
             string path = Environment.CurrentDirectory;
-            APIKeysFileExistingModel existingModel = new APIKeysFileExistingModel(path);
-            if(existingModel.IsConfilgExists)
+            APIKeysFileExistingChecker existingModel = new APIKeysFileExistingChecker(path);
+            if(existingModel.IsAPIKeysFileExists)
             {
                 Assert.AreEqual(path + "\\APIKeys.xml", existingModel.ConfigFilePath);
             }

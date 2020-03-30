@@ -55,13 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Translator\Language.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="APIKey\APIKeyController.cs" />
     <Compile Include="APIKey\APIKeyModel.cs" />
-    <Compile Include="APIKey\APIKeysFileExistingModel.cs" />
+    <Compile Include="APIKey\APIKeysFileExistingChecker.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

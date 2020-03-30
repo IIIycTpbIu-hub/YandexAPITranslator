@@ -2,11 +2,11 @@
 
 namespace YandexAPITranslator.APIKey
 {
-    public class APIKeysFileExistingModel
+    public class APIKeysFileExistingChecker
     {
         private string _fileName;
 
-        public bool IsConfilgExists { get; private set; }
+        public bool IsAPIKeysFileExists { get; private set; }
         public string ConfigFilePath {
             get
             {
@@ -18,7 +18,7 @@ namespace YandexAPITranslator.APIKey
             }
         }
 
-        public APIKeysFileExistingModel(string environmentFolderPath)
+        public APIKeysFileExistingChecker(string environmentFolderPath)
         {
             ConfigFilePath = environmentFolderPath + "\\APIKeys.xml";
             CheckKeysConfigFileExisting();
@@ -26,8 +26,8 @@ namespace YandexAPITranslator.APIKey
 
         private bool CheckKeysConfigFileExisting()
         {
-            IsConfilgExists = File.Exists(ConfigFilePath);
-            return IsConfilgExists;
+            IsAPIKeysFileExists = File.Exists(ConfigFilePath);
+            return IsAPIKeysFileExists;
         }
 
         public bool CreateKeysConfingFile()
@@ -36,9 +36,9 @@ namespace YandexAPITranslator.APIKey
             {
                 using (FileStream fileStream = new FileStream(ConfigFilePath ,FileMode.Create))
                 {
-                    IsConfilgExists = true;
+                    IsAPIKeysFileExists = true;
                 }
-                return IsConfilgExists;
+                return IsAPIKeysFileExists;
             }
             catch (System.Exception e)
             {
