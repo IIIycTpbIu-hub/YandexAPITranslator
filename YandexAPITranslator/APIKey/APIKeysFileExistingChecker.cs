@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Xml.Linq;
 
 namespace YandexAPITranslator.APIKey
 {
@@ -34,10 +35,11 @@ namespace YandexAPITranslator.APIKey
         {
             try
             {
-                using (FileStream fileStream = new FileStream(ConfigFilePath ,FileMode.Create))
-                {
-                    IsAPIKeysFileExists = true;
-                }
+                XDocument xmlFile = new XDocument();
+                XElement keys = new XElement("APIKeys");
+                xmlFile.Add(keys);
+                xmlFile.Save(ConfigFilePath);
+                IsAPIKeysFileExists = true;
                 return IsAPIKeysFileExists;
             }
             catch (System.Exception e)
