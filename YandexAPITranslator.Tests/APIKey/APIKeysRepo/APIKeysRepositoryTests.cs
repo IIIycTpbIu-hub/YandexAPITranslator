@@ -3,8 +3,9 @@ using System.Collections.ObjectModel;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using YandexAPITranslator.APIKey;
+using YandexAPITranslator.APIKey.APIKeysRepo;
 
-namespace YandexAPITranslator.APIKey.Tests
+namespace YandexAPITranslator.Tests.APIKey.APIKeysRepo
 {
     [TestClass]
     public class APIKeysRepositoryTests
@@ -36,16 +37,30 @@ namespace YandexAPITranslator.APIKey.Tests
         }
 
         [TestMethod]
-        public void WriteAPIKeyTest()
+        public void Add_Find_Remove_APIKeyTest()
         {
-            var keysCollection = _apiKeyModel.ReadAPIKeys();
-            if(keysCollection.Count == 0)
-            {
-                APIKey key = new APIKey("1234");
-                _apiKeyModel.AddAPIKey(key);
-                keysCollection = _apiKeyModel.ReadAPIKeys();
-                Assert.AreEqual(key.KeyValue, keysCollection[0].KeyValue);
-            }
+            APIKeyEntity key = new APIKeyEntity("1234");
+            _apiKeyModel.AddAPIKey(key);
+
+            var writtenKey = _apiKeyModel.FindAPIKey(key.KeyValue);
+            Assert.IsNotNull(writtenKey);
+
+            _apiKeyModel.RemoveAPIKey(key);
+
+            var keysCount = _apiKeyModel.ReadAPIKeys().Count;
+            Assert.AreEqual(0, keysCount);
+        }
+
+        [TestMethod]
+        public void FindCurrentKeyTest()
+        {
+            APIKeyEntity key = new APIKeyEntity("1234", true);
+            _apiKeyModel.AddAPIKey(key, true);
+
+            var writtenKey = _apiKeyModel.FindCurrentAPIKey();
+
+            Assert.AreEqual(key.IsCurrent, writtenKey.IsCurrent);
+            Assert.AreEqual(key.KeyValue, writtenKey.KeyValue);
         }
     }
 }

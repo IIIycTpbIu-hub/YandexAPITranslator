@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using YandexAPITranslator.APIKey.APIKeysView;
+using YandexAPITranslator.APIKey.APIKeysController;
+using YandexAPITranslator.APIKey.APIKeysRepo;
 
 namespace YandexAPITranslator
 {
@@ -23,6 +26,13 @@ namespace YandexAPITranslator
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void SetCurrentAPIKeyMenuItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            APIKeysWindow view = new APIKeysWindow();
+            view.Visibility = Visibility.Visible;
+            IKeysViewInputHandler inputHandler = new APIKeyController(view);
         }
     }
 }

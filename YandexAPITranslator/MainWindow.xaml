@@ -15,8 +15,7 @@
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
             <MenuItem Header="Настройки" Width="75" Height="20">
-                <Label Name ="SetCurrentAPIKeyMenuItem" Content="Доступные API ключи разработчика"/>
-                <Label Name="ADD_APIKeyMenuItem" Content="Добавить API ключ разработчика"/>
+                <Label Name ="SetCurrentAPIKeyMenuItem" Content="Доступные API ключи разработчика" MouseLeftButtonUp="SetCurrentAPIKeyMenuItem_MouseLeftButtonUp"/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">

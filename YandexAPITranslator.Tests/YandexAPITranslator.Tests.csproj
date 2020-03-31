@@ -49,9 +49,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIKey\APIKeyControllerTests.cs" />
-    <Compile Include="APIKey\APIKeysRepositoryTests.cs" />
-    <Compile Include="APIKey\KeysFileModelTests.cs" />
+    <Compile Include="APIKey\APIKeysController\APIKeyControllerTests.cs" />
+    <Compile Include="APIKey\APIKeysController\EmptyView.cs" />
+    <Compile Include="APIKey\APIKeysRepo\APIKeysRepositoryTests.cs" />
+    <Compile Include="APIKey\APIKeysRepo\APIKeysFileExistingCheckerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

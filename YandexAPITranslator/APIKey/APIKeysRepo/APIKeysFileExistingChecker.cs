@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Linq;
 
-namespace YandexAPITranslator.APIKey
+namespace YandexAPITranslator.APIKey.APIKeysRepo
 {
     public class APIKeysFileExistingChecker
     {

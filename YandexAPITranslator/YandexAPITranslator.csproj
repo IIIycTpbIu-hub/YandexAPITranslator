@@ -55,15 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="APIKey\APIKey.cs" />
+    <Compile Include="APIKey\APIKeyEntity.cs" />
+    <Compile Include="APIKey\APIKeysController\IKeysViewInputHandler.cs" />
+    <Compile Include="APIKey\APIKeysRepo\IKeysRepository.cs" />
+    <Compile Include="APIKey\APIKeysView\APIKeysWindow.xaml.cs">
+      <DependentUpon>APIKeysWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="APIKey\APIKeysView\IKeysView.cs" />
     <Compile Include="Translator\Language.cs" />
+    <Page Include="APIKey\APIKeysView\APIKeysWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="APIKey\APIKeyController.cs" />
-    <Compile Include="APIKey\APIKeysRepository.cs" />
-    <Compile Include="APIKey\APIKeysFileExistingChecker.cs" />
+    <Compile Include="APIKey\APIKeysController\APIKeyController.cs" />
+    <Compile Include="APIKey\APIKeysRepo\APIKeysRepository.cs" />
+    <Compile Include="APIKey\APIKeysRepo\APIKeysFileExistingChecker.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

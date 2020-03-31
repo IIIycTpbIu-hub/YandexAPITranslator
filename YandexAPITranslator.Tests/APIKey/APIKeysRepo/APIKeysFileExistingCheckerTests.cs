@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using YandexAPITranslator.APIKey;
+using YandexAPITranslator.APIKey.APIKeysRepo;
 using System;
 
-namespace YandexAPITranslator.Tests.APIKey
+namespace YandexAPITranslator.Tests.APIKey.APIKeysRepo
 {
     [TestClass]
-    public class KeysFileModelTests
+    public class APIKeysFileExistingCheckerTests
     {
         [TestMethod]
         public void CheckCreatingKeyConfigFileIfNotExists()
