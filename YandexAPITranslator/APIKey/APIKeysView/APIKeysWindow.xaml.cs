@@ -27,12 +27,14 @@ namespace YandexAPITranslator.APIKey.APIKeysView
         }
 
         public event EventHandler<String> AddKey;
+        public event EventHandler<String> RemoveKey;
         public event EventHandler<String> SelectKey;
         public event EventHandler CloseView;
 
         public void SetInputHandler(IKeysViewInputHandler inputHandler)
         {
             AddKey += inputHandler.OnAddKey;
+            RemoveKey += inputHandler.OnRemoveKey;
             SelectKey += inputHandler.OnSelectKey;
             CloseView += inputHandler.OnViewClosing;
         }
@@ -40,6 +42,7 @@ namespace YandexAPITranslator.APIKey.APIKeysView
         public void RemoveInputHandler(IKeysViewInputHandler inputHandler)
         {
             AddKey -= inputHandler.OnAddKey;
+            RemoveKey -= inputHandler.OnRemoveKey;
             SelectKey -= inputHandler.OnSelectKey;
             CloseView -= inputHandler.OnViewClosing;
         }
@@ -60,20 +63,31 @@ namespace YandexAPITranslator.APIKey.APIKeysView
 
         private void addKeyButton_Click(object sender, RoutedEventArgs e)
         {
-            AddKey?.Invoke(sender, newKeyTextBox.Text);
-            newKeyTextBox.Text = "";
-        }
-
-        private void StackPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            var sp = sender as StackPanel;
-            var child = sp.Children[0] as Label;
-            SelectKey?.Invoke(sender, child.Content.ToString());
+            if(newKeyTextBox.Text != "")
+            {
+                AddKey?.Invoke(sender, newKeyTextBox.Text);
+                newKeyTextBox.Text = "";
+            }
+            
         }
 
         private void APIKeysView_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             CloseView?.Invoke(this, e);
+        }
+
+        private void DockPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var sp = sender as DockPanel;
+            var grid = sp.Children[0] as Grid;
+            var child = grid.Children[0] as Label;
+            SelectKey?.Invoke(sender, child.Content.ToString());
+        }
+
+        private void contextMenuItem_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            APIKeyEntity removingKey = keysList.SelectedItem as APIKeyEntity;
+            RemoveKey?.Invoke(sender, removingKey.KeyValue);
         }
     }
 }

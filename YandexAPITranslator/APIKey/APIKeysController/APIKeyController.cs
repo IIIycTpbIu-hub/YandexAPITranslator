@@ -55,6 +55,24 @@ namespace YandexAPITranslator.APIKey.APIKeysController
             }
         }
 
+        public void OnRemoveKey(Object sender, String key)
+        {
+            var removingKey = _keysRepository.FindAPIKey(key);
+            if(removingKey != null)
+            {
+                if(CurrentKey != null)
+                {
+                    if (removingKey.KeyValue == CurrentKey.KeyValue && removingKey.IsCurrent == CurrentKey.IsCurrent)
+                    {
+                        CurrentKey = null;
+                        _view.ShowCurrentKey(new APIKeyEntity("-"));
+                    }
+                }                
+                _keysRepository.RemoveAPIKey(removingKey);
+                _view.ShowAvaibleKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
+            }
+        }
+
         public void OnSelectKey(Object sender, String key)
         {
             if(CurrentKey != null)

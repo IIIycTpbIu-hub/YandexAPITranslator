@@ -20,16 +20,29 @@
             <Label Content="Текущий ключ:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Name="currentKeyLabel" Grid.Column="1" Content="{Binding Path=KeyValue}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
-        <ListBox x:Name="keysList" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Background="LightCoral" MouseLeftButtonUp="StackPanel_MouseLeftButtonUp">
-                        <Label x:Name="keyPannel" Content="{Binding Path=KeyValue}"></Label>
-                        <Label Content="{Binding Path=IsCurrent}"></Label>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <ListBox x:Name="keysList" HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel MouseLeftButtonUp="DockPanel_MouseLeftButtonUp">
+                            <Grid Background="Snow" Height="65">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" DockPanel.Dock="Left" x:Name="keyPannel" Content="{Binding Path=KeyValue}"></Label>
+                                <Label Grid.Column="1" DockPanel.Dock="Right" Content="{Binding Path=IsCurrent}"></Label>
+                            </Grid>
+                            <DockPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="contextMenuItem" Header="Удалить" PreviewMouseUp="contextMenuItem_PreviewMouseUp"/>
+                                </ContextMenu>
+                            </DockPanel.ContextMenu>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
