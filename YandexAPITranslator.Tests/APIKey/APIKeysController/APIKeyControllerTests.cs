@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using YandexAPITranslator.APIKey;
+using YandexAPITranslator.APIKey.APIKeysView;
 using YandexAPITranslator.APIKey.APIKeysController;
 using YandexAPITranslator.APIKey.APIKeysRepo;
 

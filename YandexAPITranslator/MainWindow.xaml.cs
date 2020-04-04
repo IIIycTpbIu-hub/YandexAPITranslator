@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using YandexAPITranslator.APIKey.APIKeysView;
 using YandexAPITranslator.APIKey.APIKeysController;
-using YandexAPITranslator.APIKey.APIKeysRepo;
+using YandexAPITranslator.YandexAPIInteraction;
+using YandexAPITranslator.YandexAPIInteraction.Entities;
 
 namespace YandexAPITranslator
 {
@@ -32,7 +33,10 @@ namespace YandexAPITranslator
         {
             APIKeysWindow view = new APIKeysWindow();
             view.Visibility = Visibility.Visible;
-            IKeysViewInputHandler inputHandler = new APIKeyController(view);
+            APIKeyController inputHandler = new APIKeyController(view);
+            YandexAPIInteractor interactor = new YandexAPIInteractor();
+            interactor.SendRequest(new TranslationRequest(inputHandler.CurrentKey.KeyValue, "ru-en", "Привет"));
+            interactor.SendRequest(new GetLanguagesRequest(inputHandler.CurrentKey.KeyValue, "ru"));
         }
     }
 }
