@@ -26,7 +26,7 @@ namespace YandexAPITranslator.Tests.APIKey.APIKeysController
             Set = true;
         }
 
-        public void ShowAvaibleKeys<T>(ObservableCollection<T> keysCollection)
+        public void ShowAvailableKeys<T>(ObservableCollection<T> keysCollection)
         {
             ShowAvaible = true;
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YandexAPITranslator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Initialized="Window_Initialized" Closing="Window_Closing">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -24,29 +24,33 @@
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ListBox x:Name="currentLanguage" Grid.Column="0">
-                <ListBox.ItemTemplate>
+            <ComboBox x:Name="currentLanguage" Grid.Column="0" HorizontalContentAlignment="Stretch" SelectionChanged="currentLanguage_SelectionChanged">
+                <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path=FullName}"/>
+                        <DockPanel>
+                            <TextBlock Text="{Binding Path=FullName}"/>
+                        </DockPanel>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <Button x:Name="swapLanguages" Content="Swap" Grid.Column="1"/>
-            <ListBox x:Name="targetLanguage" Grid.Column="2">
-                <ListBox.ItemTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button x:Name="swapLanguages" Content="Swap" Grid.Column="1" Click="swapLanguages_Click"/>
+            <ComboBox x:Name="targetLanguage" Grid.Column="2" HorizontalContentAlignment="Stretch" SelectionChanged="targetLanguage_SelectionChanged">
+                <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path=FullName}"/>
+                        <DockPanel>
+                            <TextBlock Text="{Binding Path=FullName}"/>
+                        </DockPanel>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="currentLanguageTextBox" Margin="5" Grid.Column="0"></TextBox>
-            <TextBox x:Name="targetLanguageTextBox" Margin="5" Grid.Column="1"></TextBox>
+            <TextBox x:Name="currentLanguageTextBox" Margin="5" Grid.Column="0" TextChanged="currentLanguageTextBox_TextChanged" TextWrapping="WrapWithOverflow"/>
+            <TextBox x:Name="targetLanguageTextBox" Margin="5" Grid.Column="1" IsReadOnly="True" TextWrapping="WrapWithOverflow"></TextBox>
         </Grid>
     </Grid>
 </Window>

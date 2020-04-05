@@ -47,7 +47,7 @@ namespace YandexAPITranslator.APIKey.APIKeysView
             CloseView -= inputHandler.OnViewClosing;
         }
 
-        public void ShowAvaibleKeys<T>(ObservableCollection<T> keysCollection)
+        public void ShowAvailableKeys<T>(ObservableCollection<T> keysCollection)
         {
             keysList.ItemsSource = keysCollection;
         }
@@ -89,5 +89,6 @@ namespace YandexAPITranslator.APIKey.APIKeysView
             APIKeyEntity removingKey = keysList.SelectedItem as APIKeyEntity;
             RemoveKey?.Invoke(sender, removingKey.KeyValue);
         }
+
     }
 }

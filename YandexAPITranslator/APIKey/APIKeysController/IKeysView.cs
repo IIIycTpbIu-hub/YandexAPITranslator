@@ -8,7 +8,7 @@ namespace YandexAPITranslator.APIKey.APIKeysController
     {
         void SetInputHandler(IKeysViewInputHandler inputHandler);
         void RemoveInputHandler(IKeysViewInputHandler inputHandler);
-        void ShowAvaibleKeys<T>(ObservableCollection<T> keysCollection);
+        void ShowAvailableKeys<T>(ObservableCollection<T> keysCollection);
         void ShowCurrentKey(APIKeyEntity key);
     }
 }

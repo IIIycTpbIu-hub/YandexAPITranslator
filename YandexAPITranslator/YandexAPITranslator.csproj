@@ -90,7 +90,10 @@
       <DependentUpon>APIKeysWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="APIKey\APIKeysController\IKeysView.cs" />
+    <Compile Include="Translator\ITranslationView.cs" />
+    <Compile Include="Translator\ITranslationViewInputHandler.cs" />
     <Compile Include="Translator\Language.cs" />
+    <Compile Include="Translator\TranslationController.cs" />
     <Compile Include="YandexAPIInteraction\Entities\GetLanguagesRequest.cs" />
     <Compile Include="YandexAPIInteraction\Entities\LanguagesResponce.cs" />
     <Compile Include="YandexAPIInteraction\Entities\TranslationRequest.cs" />

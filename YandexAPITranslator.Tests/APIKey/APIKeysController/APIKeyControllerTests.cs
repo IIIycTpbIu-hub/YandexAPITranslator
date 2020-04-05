@@ -19,7 +19,7 @@ namespace YandexAPITranslator.Tests.APIKey.APIKeysController
         {
             _checker = new APIKeysFileExistingChecker(Environment.CurrentDirectory);
             _view = new EmptyView();
-            _controller = new APIKeyController(_view);
+            _controller = new ApiKeyController(_view);
         }
 
         [TestCleanup]

@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YandexAPITranslator.APIKey.APIKeysView;
 using YandexAPITranslator.APIKey.APIKeysRepo;
 
 namespace YandexAPITranslator.APIKey.APIKeysController
 {
-    public class APIKeyController : IKeysViewInputHandler
+    public class ApiKeyController : IKeysViewInputHandler
     {
-        IKeysView _view;
-        IKeysRepository _keysRepository;
+        private readonly IKeysView _view;
+        private readonly IKeysRepository _keysRepository;
 
         public APIKeyEntity CurrentKey { get; private set; }
 
-        public APIKeyController(IKeysView view)
+        public ApiKeyController(IKeysView view)
         {
             APIKeysFileExistingChecker checker = new APIKeysFileExistingChecker(Environment.CurrentDirectory);
             if(!checker.IsAPIKeysFileExists)
@@ -29,13 +25,13 @@ namespace YandexAPITranslator.APIKey.APIKeysController
             CurrentKey = _keysRepository.FindCurrentAPIKey();
 
             _view.ShowCurrentKey(CurrentKey);
-            _view.ShowAvaibleKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
+            _view.ShowAvailableKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
         }
 
         public void OnAddKey(object sender, string key)
         {
-            bool done = false;
-            APIKeyEntity newKey = null;
+            bool done;
+            APIKeyEntity newKey;
             if (CurrentKey == null)
             {
                 newKey = new APIKeyEntity(key, true);
@@ -51,7 +47,7 @@ namespace YandexAPITranslator.APIKey.APIKeysController
             
             if(done)
             {
-                _view.ShowAvaibleKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
+                _view.ShowAvailableKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
             }
         }
 
@@ -69,7 +65,7 @@ namespace YandexAPITranslator.APIKey.APIKeysController
                     }
                 }                
                 _keysRepository.RemoveAPIKey(removingKey);
-                _view.ShowAvaibleKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
+                _view.ShowAvailableKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
             }
         }
 
@@ -99,7 +95,7 @@ namespace YandexAPITranslator.APIKey.APIKeysController
                 }
             }
             _view.ShowCurrentKey(CurrentKey);
-            _view.ShowAvaibleKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
+            _view.ShowAvailableKeys<APIKeyEntity>(_keysRepository.ReadAPIKeys());
         }
 
         public void OnViewClosing(Object sender, EventArgs e)

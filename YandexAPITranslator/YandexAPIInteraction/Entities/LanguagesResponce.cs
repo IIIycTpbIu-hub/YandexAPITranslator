@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using YandexAPITranslator.Translator;
 
 namespace YandexAPITranslator.YandexAPIInteraction.Entities
 {
     public class LanguagesResponce : BaseYandexAPIResponce
     {
-        public string[] Dirs { get; set; }
+        public Dictionary<string, string> Langs { get; set; }
     }
 }

@@ -18,12 +18,12 @@ namespace YandexAPITranslator.YandexAPIInteraction
 
         public void AddAPIResponceObserver(IAPIResponceObserver observer)
         {
-            ResponcePreformed += observer.OnResponcePreformed;
+            ResponcePreformed += observer.OnResponsePreformed;
         }
 
         public void RemoveAPIResponceObserver(IAPIResponceObserver observer)
         {
-            ResponcePreformed -= observer.OnResponcePreformed;
+            ResponcePreformed -= observer.OnResponsePreformed;
         }
 
         public async void SendRequest(BaseYandexAPIRequest request)
